@@ -22,7 +22,7 @@ int main()
   connect(sock, (struct sockaddr *)&servaddr, sizeof(servaddr));
   printf("Connected\n");
 
-  sprintf(request, "GET / HTTP/1.1\r\nHost: %s\r\n\r\n", host);
+  sprintf(req, "GET / HTTP/1.1\r\nHost: %s\r\n\r\n", host);
   send(sock, req, strlen(req), 0);
   printf("Request Sent\n");
 
