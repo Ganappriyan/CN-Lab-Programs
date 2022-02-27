@@ -30,7 +30,7 @@ int main()
         recv(sock, buff, 1024, 0);
         if (strcmp(buff, "-stop\n") == 0)
             break;
-        printf("Server Echo: %s\n", buff);
+        printf("Server: %s\n", buff);
     }
     printf("Session Closed\n");
 }
