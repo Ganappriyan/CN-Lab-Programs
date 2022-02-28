@@ -14,9 +14,9 @@ int main()
   struct sockaddr_in servaddr, cliaddr;
 
   int sock = socket(AF_INET, SOCK_DGRAM, 0);
-  servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-  servaddr.sin_port = htons(PORT);
+  servaddr.sin_addr.s_addr = INADDR_ANY;
   servaddr.sin_family = AF_INET;
+  servaddr.sin_port = htons(PORT);
 
   bind(sock, (struct sockaddr *)&servaddr, sizeof(servaddr));
   int len = sizeof(cliaddr);
@@ -26,7 +26,7 @@ int main()
   printf("Domain Received: %s\n", buffer);
 
   struct hostent *host_entry = gethostbyname(buffer);
-  ip = inet_ntoa(*((struct in_addr *)host_entry->h_addr_list[0]));
+  ip = (host_entry == NULL) ? "IP Not Found!" : inet_ntoa(*((struct in_addr *)host_entry->h_addr));
 
   sendto(sock, ip, 1024, 0, (struct sockaddr *)&cliaddr, len);
   printf("IP Sent: %s\n", ip);
