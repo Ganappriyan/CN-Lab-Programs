@@ -18,7 +18,6 @@ int main()
 {
   char buffer[1024];
   struct sockaddr_in servaddr, cliaddr;
-  bzero(&servaddr, sizeof(servaddr));
 
   int sock = socket(AF_INET, SOCK_DGRAM, 0);
   servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -26,8 +25,8 @@ int main()
   servaddr.sin_family = AF_INET;
 
   bind(sock, (struct sockaddr *)&servaddr, sizeof(servaddr));
-
   int len = sizeof(cliaddr), i;
+
   struct IPmac in[3] = {{"10.1.1.8", "44:dd:22:11:33"},
                         {"127.0.0.1", "33:aa:fe:4e:2d"},
                         {"10.1.8.5", "23:a3:5d:33:9d"}};
