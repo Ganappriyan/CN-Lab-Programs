@@ -9,7 +9,6 @@
 
 int main()
 {
-  struct hostent *server;
   struct sockaddr_in servaddr;
   char buffer[1024];
   int sock = socket(AF_INET, SOCK_STREAM, 0);

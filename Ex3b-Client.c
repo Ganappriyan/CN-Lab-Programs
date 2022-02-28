@@ -9,7 +9,6 @@
 
 int main()
 {
-    struct hostent *server;
     struct sockaddr_in servaddr;
     char buff[1024];
 
