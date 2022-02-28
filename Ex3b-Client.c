@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#define PORT 8080
 
 int main()
 {
@@ -15,7 +16,7 @@ int main()
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
     servaddr.sin_family = AF_INET;
-    servaddr.sin_port = htons(8080);
+    servaddr.sin_port = htons(PORT);
     
     connect(sock, (struct sockaddr *)&servaddr, sizeof(servaddr));
     printf("Connected to Server\n");

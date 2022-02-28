@@ -4,6 +4,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#define PORT 8080
 
 int main()
 {
@@ -13,7 +14,7 @@ int main()
 
   servaddr.sin_addr.s_addr = INADDR_ANY;
   servaddr.sin_family = AF_INET;
-  servaddr.sin_port = htons(8080);
+  servaddr.sin_port = htons(PORT);
 
   bind(sock, (struct sockaddr *)&servaddr, sizeof(servaddr));
   printf("Server Started\n");

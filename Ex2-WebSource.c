@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <sys/socket.h>
 #include <netdb.h>
+#define PORT 80
 
 int main()
 {
@@ -17,7 +18,7 @@ int main()
 
   memcpy(&servaddr.sin_addr, server->h_addr_list[0], server->h_length);
   servaddr.sin_family = AF_INET;
-  servaddr.sin_port = htons(80);
+  servaddr.sin_port = htons(PORT);
 
   connect(sock, (struct sockaddr *)&servaddr, sizeof(servaddr));
   printf("Connected\n");
